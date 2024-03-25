@@ -1,14 +1,16 @@
-#include <iostream>
+#include <fstream>
 #include "Board.h"
+#include "helpers.h"
 
 int main(int argc, char* argv[]) {
     Board b;
     std::cout << b << std::endl;
-    for(int i = 0; i < 5; i++) {
-        for(int j = 0; j < 5; j++) {
-            b.setTile(i, j, 'V');
-        }
-    }
+    std::string filename = "board.txt";
+    // board.txt should describe a 5x5 board. if you update board to be bigger/smaller, update parseFileToVector arg
+    // parse func is very particular in what format file it accepts
+    writeFileToBoard(filename, b);
+
     std::cout << b << std::endl;
+
     return 0;
-} 
+}
