@@ -3,6 +3,25 @@
 #include "helpers.h"
 
 int main(int argc, char* argv[]) {
+
+    char inputType;
+    std::cout << "Welcome to Voltorb Flip Solver!" << std::endl;
+    while(true) {
+        std::cout << "Enter \'f\' to input the row/col hints from board.txt file, or \'c\' to enter them manually:";
+        std::cin >> inputType;
+        if(tolower(inputType) == 'f') {
+            std::cout << "reading from file" << std::endl;
+            break;
+        } else if(tolower(inputType) == 'c') {
+            std::cout << "accepting manual input" << std::endl;
+            break;
+        } else {
+            std::cout << "invalid option" << std::endl;
+        }
+    }
+
+
+
     Board b;
     std::cout << b << std::endl;
     std::string filename = "board.txt";
