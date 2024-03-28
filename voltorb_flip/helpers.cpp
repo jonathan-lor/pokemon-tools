@@ -13,12 +13,18 @@ std::vector<std::string> split(const std::string& s, char delim) {
     return tokens;
 }
 
+// naive parser from file to board
 void writeFileToBoard(std::string& filename, Board& b) {
     std::ifstream file(filename);
     std::string line;
 
     if(file.is_open()) {
         try {
+            // read the first line corresponding to length of row/col (n)
+            int n;
+            getline(file, line);
+            n = stoi(line);
+            // read second and third lines corresponding to contents of row, col respectively
             for(int r = 0; r < 2; r++) { // runs for 2 iterations - first sets row, second sets col
                 getline(file, line); // gets rows first
                 std::vector<std::vector<int>> res(b.size(), std::vector<int>(2, 0));
@@ -33,6 +39,14 @@ void writeFileToBoard(std::string& filename, Board& b) {
                 for(size_t i = 0; i < res.size(); i++) {
                     r == 0 ? b.setSingleRowInfo(i, 0, res[i][0]) : b.setSingleColInfo(i, 0, res[i][0]);
                     r == 0 ? b.setSingleRowInfo(i, 1, res[i][1]) : b.setSingleColInfo(i, 1, res[i][1]);
+                }
+            }
+            // read the next n lines and parse to board
+            for(int i = 0; i < n; i++) {
+                getline(file, line);
+                std::vector<std::string> rowVals = split(line, ',');
+                for(int j = 0; j < n; j++) {
+                    b.setTile(i, j, rowVals[j][0]);
                 }
             }
         } catch (...) {

@@ -16,7 +16,7 @@ void Cell::setPossibleValues(int index, bool value) {
 
 void Cell::printPossibleValues() {
     for(const bool& val : possibleValues) std::cout << val;
-    cout << std::endl;
+    std::cout << std::endl;
 }
 
 const char Cell::getActualValue() const {
