@@ -1,0 +1,78 @@
+voltorb flip algo
+
+notes:
+- doesnt solve the board in one go. thats impossible since only game/input knows the actual board contents
+- accepts the current state of a board, and returns the best cell(s) to pick
+- return list of cells with equal best probability because:
+	- human can better decide which "best" cell reveals most information about rest of board?
+- might need to add coord members to cell class
+
+[] bestTile(board):
+	// all these arrays store coordinates of cells
+	// basically like hood pointers to cells
+	guaranteedSafeCells = []
+	bestCellsToFlip = []
+	
+	minRiskBest = []
+	scoreFirstBest = []
+
+	// processing safe house rule
+	processSafeHouse(board, rowInfo, guaranteedSafeCells)
+	processSafeHouse(board, colInfo, guaranteedSafeCells)
+	
+	if guaranteedSafeCells.length > 0:
+		return guaranteedSafeCells		
+
+	for each cell in board:
+		if cell.actualValue == ?:
+			updatePossibleValues(board, cell, rowInfo, colInfo) // n-sum rule
+		
+
+processSafeHouse(board, rowCol, guaranteedSafeCells)
+	for RowColInfo in rowCol info:
+		if totalVoltorbs == 0
+			add cell to guaranteedSafCells
+
+
+updatePossibleValues(board, cell, rowInfo, colInfo):
+	
+	rowLength, colLength = n
+	total_v_in_row, total_points_in_row, v_found_row, points_found_row
+	total_v_in_col, total_points_in_col, v_found_col, points_found_col
+ 	
+	// row check
+	check_v() 
+	check_num()
+	check_num()
+	check_num()
+
+	// col check
+
+	iterate row, sum total_points
+
+// basically applying n sum rule
+// if a voltorb was found through process of elimination, its possible a tile could be totally safe. this is what this function checks for
+// what if the tile that updates v_found is the same one that check_v would return false for?
+bool check_v(total_v, v_found, n):
+	return v_found < total_v
+// if there ever was a bug in the logic, it would be here
+bool check_num(target, total_points, points_found, total_v):
+	// sub voltorbs out, to guarantee that num_indices will contain all numbers
+	num_indices = n - total_v - total_flipped // possible bug here where there is overlap between flipped and total_v
+	// if incrementing v_found by process of elimination, maybe dont increment total_flipped to prevent this overlap
+	// recognize that "finding" a v doesnt change how many total there are and doesnt have any effect on the number check criteria
+	max_sum = total_points - points_found
+
+	min_possible_sum = 1 * num_indices // minimum possible sum in this subarray
+	max_possible_sum = 3 * num_indices
+
+	min_sum_with_target = target + 1 * (num_indices - 1)
+	max_sum_with_target = target + 3 * (num_indices - 1)
+
+	return min_sum_with_target <= max_sum && max_sum <= max_sum_with_target
+	
+prob_to_hit_voltorb():
+	return num_voltorbs / unflipped cells
+
+flip(cell, row, col, val):
+	cell.actualValue = val
