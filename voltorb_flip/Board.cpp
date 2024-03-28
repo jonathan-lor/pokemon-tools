@@ -39,6 +39,9 @@ void Board::setSingleColInfo(int i, int j, int val) {
 void Board::setTile(int row, int col, char val) {
     board[row][col].setActualValue(val);
 }
+std::array<bool, 4> Board::getPossibleValues(int row, int col) const {
+    return board[row][col].getPossibleValues();
+}
 
 std::ostream& operator<<(std::ostream& os, const Board& b) {
     for(int i = 0; i < 5 * b.boardSize; i++) os << "-";

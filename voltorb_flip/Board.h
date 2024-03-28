@@ -23,9 +23,12 @@ public:
     int getSingleColInfo(int i, int j) const;
     void setSingleColInfo(int i, int j, int val);
     void setTile(int row, int col, char val);
+    std::array<bool, 4> getPossibleValues(int row, int col) const;
     
+    // func check entire row, col of a single cell to update possible value of that cell
+    
+    // get Best tile
     // markTile abstraction for underlying length 4 array
-    // just shows which values are possible
     void markTile(char c);
     friend std::ostream& operator<<(std::ostream& os, const Board& b);
 };

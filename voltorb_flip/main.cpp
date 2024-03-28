@@ -11,6 +11,9 @@ int main(int argc, char* argv[]) {
     writeFileToBoard(filename, b);
 
     std::cout << b << std::endl;
-
+    std::array<bool, 4> arr;
+    arr.fill(false);
+    for(bool& v : arr) std::cout << v;
+    std::cout << std::endl;
     return 0;
 }

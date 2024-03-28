@@ -1,7 +1,8 @@
 #include "Cell.h"
+#include <iostream>
 
-Cell::Cell() {
-    for(bool& elem : possibleValues) elem = true;
+Cell::Cell() : possibleValues({1, 1, 1, 1}) {
+    // for(bool& elem : possibleValues) elem = true;
     actualValue = '?';
 }
 
@@ -11,6 +12,11 @@ std::array<bool, 4> Cell::getPossibleValues() const {
 
 void Cell::setPossibleValues(int index, bool value) {
     possibleValues[index] = value;
+}
+
+void Cell::printPossibleValues() {
+    for(const bool& val : possibleValues) std::cout << val;
+    cout << std::endl;
 }
 
 const char Cell::getActualValue() const {
