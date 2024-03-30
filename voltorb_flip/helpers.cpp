@@ -37,8 +37,8 @@ void writeFileToBoard(std::string& filename, Board& b) {
                     res[i][1] = stoi(vals[1]);
                 }
                 for(size_t i = 0; i < res.size(); i++) {
-                    r == 0 ? b.setSingleRowInfo(i, 0, res[i][0]) : b.setSingleColInfo(i, 0, res[i][0]);
-                    r == 0 ? b.setSingleRowInfo(i, 1, res[i][1]) : b.setSingleColInfo(i, 1, res[i][1]);
+                    r == 0 ? b.setRowTotalPoints(i, res[i][0]) : b.setColTotalPoints(i, res[i][0]);
+                    r == 0 ? b.setRowTotalVoltorbs(i, res[i][1]) : b.setColTotalVoltorbs(i, res[i][1]);
                 }
             }
             // read the next n lines and parse to board

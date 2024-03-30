@@ -19,7 +19,7 @@ public:
     std::array<bool, 4> getPossibleValues() const;
     void setPossibleValues(int index, bool value);
     void printPossibleValues();
-    const char getActualValue() const;
+    char getActualValue() const;
     void setActualValue(char c);
 
 

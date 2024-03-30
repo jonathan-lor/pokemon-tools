@@ -19,7 +19,7 @@ void Cell::printPossibleValues() {
     std::cout << std::endl;
 }
 
-const char Cell::getActualValue() const {
+char Cell::getActualValue() const {
     return actualValue;
 }
 

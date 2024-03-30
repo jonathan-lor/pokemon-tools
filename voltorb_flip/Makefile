@@ -4,7 +4,7 @@ CXXFLAGS = -g -Wall -std=c++11
 
 TARGET = voltorb_flip
 
-SOURCES = main.cpp Board.cpp Cell.cpp helpers.cpp
+SOURCES = main.cpp Board.cpp Cell.cpp RowColInfo.cpp helpers.cpp
 
 all: $(TARGET)
 

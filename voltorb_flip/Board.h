@@ -5,12 +5,15 @@
 #include <vector>
 #include <string>
 #include "Cell.h"
+#include "RowColInfo.h"
 
 class Board {
 private:
     int boardSize;
-    std::vector<std::vector<int>> rowsInfo;
-    std::vector<std::vector<int>> colsInfo;
+    // std::vector<std::vector<int>> rowsInfo;
+    // std::vector<std::vector<int>> colsInfo;
+    std::vector<RowColInfo> rowsInfo;
+    std::vector<RowColInfo> colsInfo;
     std::vector<std::vector<Cell>> board;
     void initBoard();
 
@@ -18,10 +21,13 @@ public:
     Board();
     Board(int boardSize);
     int size() const;
-    int getSingleRowInfo(int i, int j) const;
-    void setSingleRowInfo(int i, int j, int val);
-    int getSingleColInfo(int i, int j) const;
-    void setSingleColInfo(int i, int j, int val);
+
+    void setRowTotalPoints(int i, int p);
+    void setColTotalPoints(int i, int p);
+
+    void setRowTotalVoltorbs(int i, int v);
+    void setColTotalVoltorbs(int i, int v);
+
     void setTile(int row, int col, char val);
     std::array<bool, 4> getPossibleValues(int row, int col) const;
     
