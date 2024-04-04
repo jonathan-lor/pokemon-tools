@@ -12,6 +12,12 @@ private:
     // 2-> 2
     // 3 -> 3
     std::array<bool, 4> possibleValues;
+    
+    // bool vPossible;
+    // bool onePossible;
+    // bool twoPossible;
+    // bool threePossible;
+
     char actualValue;
     // actual value
 public:
@@ -21,8 +27,7 @@ public:
     void printPossibleValues();
     char getActualValue() const;
     void setActualValue(char c);
-
-
+    bool revealed();
 };
 
 #endif

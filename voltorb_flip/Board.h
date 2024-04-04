@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <utility>
 #include "Cell.h"
 #include "RowColInfo.h"
 
@@ -29,13 +30,11 @@ public:
     void setColTotalVoltorbs(int i, int v);
 
     void setTile(int row, int col, char val);
-    std::array<bool, 4> getPossibleValues(int row, int col) const;
     
-    // func check entire row, col of a single cell to update possible value of that cell
-    
-    // get Best tile
-    // markTile abstraction for underlying length 4 array
-    void markTile(char c);
+    std::vector<std::pair<int, int>> bestCells();
+    void processSafeHouse(std::vector<std::pair<int, int>>& safeCells);
+    void updatePossibleValues(int row, int col, std::vector<std::pair<int, int>>& bestCells);
+    void check_v(int total_v, int v_found, int n);
     friend std::ostream& operator<<(std::ostream& os, const Board& b);
 };
 

@@ -23,9 +23,13 @@ notes:
 	if guaranteedSafeCells.length > 0:
 		return guaranteedSafeCells		
 
+	minRiskBest = 0
+	scoreFirstBest = 0
+
 	for each cell in board:
-		if cell.actualValue == ?:
+		if !cell.flipped:
 			updatePossibleValues(board, cell, rowInfo, colInfo) // n-sum rule
+			check cell possible values against minRisk & scoreFirst criteria
 		
 
 processSafeHouse(board, rowCol, guaranteedSafeCells)
@@ -76,3 +80,6 @@ prob_to_hit_voltorb():
 
 flip(cell, row, col, val):
 	cell.actualValue = val
+
+check_invalid_board:
+	// do stuff here

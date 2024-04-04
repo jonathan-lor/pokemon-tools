@@ -1,31 +1,33 @@
 #include <fstream>
+#include <unistd.h>
 #include "Board.h"
 #include "helpers.h"
 
 int main(int argc, char* argv[]) {
 
-    char inputType;
-    std::cout << "Welcome to Voltorb Flip Solver!" << std::endl;
-    while(true) {
-        std::cout << "Enter \'f\' to input the row/col hints from board.txt file, or \'c\' to enter them manually:";
-        std::cin >> inputType;
-        if(tolower(inputType) == 'f') {
-            std::cout << "reading from file" << std::endl;
-            break;
-        } else if(tolower(inputType) == 'c') {
-            std::cout << "accepting manual input" << std::endl;
-            break;
-        } else {
-            std::cout << "invalid option" << std::endl;
+    int opt = 0;
+    std::string boardFileName = "board.txt";
+
+    while((opt = getopt(argc, argv, "b:")) != -1) {
+        switch(opt) {
+            case 'b':
+                boardFileName = optarg;
+                break;
+            default:
+                std::cerr << "Invalid Command Line Argument\n";
         }
     }
-
     Board b;
     std::cout << b << std::endl;
-    std::string filename = "board.txt";
     // board.txt should describe a 5x5 board. if you update board to be bigger/smaller, update parseFileToVector arg
     // parse func is very particular in what format file it accepts
-    writeFileToBoard(filename, b);
+    writeFileToBoard(boardFileName, b);
     std::cout << b << std::endl;
+
+    std::vector<std::pair<int, int>> bestCells;
+    bestCells = b.bestCells();
+    for(const auto& cell : bestCells) {
+        std::cout << cell.first << ", " << cell.second << std::endl;
+    }
     return 0;
 }

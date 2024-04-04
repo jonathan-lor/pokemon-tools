@@ -24,6 +24,7 @@ void writeFileToBoard(std::string& filename, Board& b) {
             int n;
             getline(file, line);
             n = stoi(line);
+            // ADD POINTS FOUND V FOUND
             // read second and third lines corresponding to contents of row, col respectively
             for(int r = 0; r < 2; r++) { // runs for 2 iterations - first sets row, second sets col
                 getline(file, line); // gets rows first
@@ -41,7 +42,7 @@ void writeFileToBoard(std::string& filename, Board& b) {
                     r == 0 ? b.setRowTotalVoltorbs(i, res[i][1]) : b.setColTotalVoltorbs(i, res[i][1]);
                 }
             }
-            // read the next n lines and parse to board
+            // reading and parsing the actual board
             for(int i = 0; i < n; i++) {
                 getline(file, line);
                 std::vector<std::string> rowVals = split(line, ',');

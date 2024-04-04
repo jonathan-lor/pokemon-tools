@@ -26,3 +26,7 @@ char Cell::getActualValue() const {
 void Cell::setActualValue(char c) {
     actualValue = c;
 }
+
+bool Cell::revealed() {
+    return actualValue == '1' || actualValue == '2' || actualValue == '3' || actualValue == 'v';
+}
