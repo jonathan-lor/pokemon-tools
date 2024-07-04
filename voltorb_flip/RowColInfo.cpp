@@ -65,3 +65,15 @@ void RowColInfo::setVoltorbsFound(int vf) {
 void RowColInfo::setFlippedTiles(int ft) {
     flippedTiles = ft;
 }
+
+void RowColInfo::addFlippedTiles(int f) {
+    flippedTiles += f;
+}
+
+void RowColInfo::addPointsFound(int p) {
+    pointsFound += p;
+}
+
+void RowColInfo::addVoltorbsFound(int v) {
+    voltorbsFound += v;
+}

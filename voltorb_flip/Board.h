@@ -23,15 +23,26 @@ public:
     Board(int boardSize);
     int size() const;
 
+    // these dont change and are read in, so only need a setter
     void setRowTotalPoints(int i, int p);
     void setColTotalPoints(int i, int p);
-
     void setRowTotalVoltorbs(int i, int v);
     void setColTotalVoltorbs(int i, int v);
 
+    // set and adders for both cases depending on how we read in board
+    void setRowPointsFound(int i, int p);
+    void setColPointsFound(int i, int p);
+    void setRowVoltorbsFound(int i, int v);
+    void setColVoltorbsFound(int i, int v);
+    void addRowPointsFound(int i, int p);
+    void addColPointsFound(int i, int p);
+    void addRowVoltorbsFound(int i, int v);
+    void addColVoltorbsFound(int i, int v);
+
+    // ADD ROW/COL ADD FLIP TILES!!!
     void setTile(int row, int col, char val);
     
-    std::vector<std::pair<int, int>> bestCells();
+    std::vector<std::pair<int, int>> getBestCells();
     void processSafeHouse(std::vector<std::pair<int, int>>& safeCells);
     void updatePossibleValues(int row, int col, std::vector<std::pair<int, int>>& bestCells);
     void check_v(int total_v, int v_found, int n);

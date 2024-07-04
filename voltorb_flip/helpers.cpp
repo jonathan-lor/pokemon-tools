@@ -33,21 +33,29 @@ void writeFileToBoard(std::string& filename, Board& b) {
                 for(size_t i = 0; i < splitted.size(); i++) {
                     splitted[i].erase(std::remove(splitted[i].begin(), splitted[i].end(), '('), splitted[i].end());
                     splitted[i].erase(std::remove(splitted[i].begin(), splitted[i].end(), ')'), splitted[i].end());
-                    std::vector<std::string> vals = split(splitted[i], ','); // results in sum like [3, 2]
+                    std::vector<std::string> vals = split(splitted[i], ','); // results in something like [3, 2]
                     res[i][0] = stoi(vals[0]);
                     res[i][1] = stoi(vals[1]);
                 }
                 for(size_t i = 0; i < res.size(); i++) {
+                    // set total points from headers
                     r == 0 ? b.setRowTotalPoints(i, res[i][0]) : b.setColTotalPoints(i, res[i][0]);
                     r == 0 ? b.setRowTotalVoltorbs(i, res[i][1]) : b.setColTotalVoltorbs(i, res[i][1]);
                 }
             }
             // reading and parsing the actual board
+            // (also includes counting and setting found points from board values)
             for(int i = 0; i < n; i++) {
                 getline(file, line);
                 std::vector<std::string> rowVals = split(line, ',');
                 for(int j = 0; j < n; j++) {
+                    // TODO: add int conversion here for simpler calcs
                     b.setTile(i, j, rowVals[j][0]);
+                    // counting points and voltorbs
+                    if(isdigit(rowVals[j][0])) {
+                        b.addRowPointsFound(i, (int)(rowVals[j][0] - 48));
+                        b.addColPointsFound(j, (int)(rowVals[j][0] - 48));
+                    }
                 }
             }
         } catch (...) {

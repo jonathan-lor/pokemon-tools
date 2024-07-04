@@ -59,6 +59,7 @@ updatePossibleValues(board, cell, rowInfo, colInfo):
 // what if the tile that updates v_found is the same one that check_v would return false for?
 bool check_v(total_v, v_found, n):
 	return v_found < total_v
+	
 // if there ever was a bug in the logic, it would be here
 bool check_num(target, total_points, points_found, total_v):
 	// sub voltorbs out, to guarantee that num_indices will contain all numbers

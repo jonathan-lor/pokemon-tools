@@ -26,7 +26,12 @@ public:
     void setTotalTiles(int n);
     void setPointsFound(int pf);
     void setVoltorbsFound(int vf);
+
     void setFlippedTiles(int ft);
+    void addFlippedTiles(int f);
+
+    void addPointsFound(int p);
+    void addVoltorbsFound(int v);
 };
 
 #endif
