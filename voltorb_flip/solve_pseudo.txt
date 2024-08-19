@@ -84,3 +84,9 @@ flip(cell, row, col, val):
 
 check_invalid_board:
 	// do stuff here
+
+note: we can always run voltorb check by subbing found from possible pts
+
+if a tile has a 'for sure' value of 2 or 3, immediately prioritize it
+
+keep track of best tile as entire board is scanned unless guaranteed spot reached

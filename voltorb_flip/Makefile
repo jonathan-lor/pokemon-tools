@@ -1,6 +1,6 @@
 CXX = g++
 
-CXXFLAGS = -g -Wall -std=c++11
+CXXFLAGS = -g -Wall -std=c++17
 
 TARGET = voltorb_flip
 

@@ -51,6 +51,11 @@ void writeFileToBoard(std::string& filename, Board& b) {
                 for(int j = 0; j < n; j++) {
                     // TODO: add int conversion here for simpler calcs
                     b.setTile(i, j, rowVals[j][0]);
+                    // checking if tile is 'flipped'
+                    if(rowVals[j][0] != '_') {
+                        b.addRowFlippedTiles(i, 1);
+                        b.addColFlippedTiles(j, 1);
+                    }
                     // counting points and voltorbs
                     if(isdigit(rowVals[j][0])) {
                         b.addRowPointsFound(i, (int)(rowVals[j][0] - 48));

@@ -18,6 +18,12 @@ private:
     std::vector<std::vector<Cell>> board;
     void initBoard();
 
+    void processSafeHouse(std::vector<std::pair<int, int>>& safeCells);
+    void updatePossibleValues(int row, int col, std::vector<std::pair<int, int>>& bestCells);
+    bool check_v(int total_v, int v_found, int n);
+    // for score first approach
+    bool checkNum(int target, int total_points, int points_found, int total_v, int total_flipped);
+
 public:
     Board();
     Board(int boardSize);
@@ -40,12 +46,11 @@ public:
     void addColVoltorbsFound(int i, int v);
 
     // ADD ROW/COL ADD FLIP TILES!!!
+    void addRowFlippedTiles(int i, int f);
+    void addColFlippedTiles(int i, int f);
+
     void setTile(int row, int col, char val);
-    
     std::vector<std::pair<int, int>> getBestCells();
-    void processSafeHouse(std::vector<std::pair<int, int>>& safeCells);
-    void updatePossibleValues(int row, int col, std::vector<std::pair<int, int>>& bestCells);
-    void check_v(int total_v, int v_found, int n);
     friend std::ostream& operator<<(std::ostream& os, const Board& b);
 };
 
